@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AyyDev Profile Info</title>
+
+  <style>
+    /* =========================
+       RESET DASAR
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-color: #0f172a;
+      --card-color: #1e293b;
+
+      --primary-color: #3b82f6;
+      --primary-hover: #2563eb;
+      
+      --special-primary-color: #047857;
+      --special-primary-hover: #065f46;
+
+      --text-color: #ffffff;
+      --subtext-color: #cbd5e1;
+
+      --soft-color: rgba(255, 255, 255, 0.08);
+      --soft-hover: rgba(255, 255, 255, 0.15);
+
+      --border-radius: 16px;
+      --transition-speed: 0.2s;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 20px;
+    }
+
+    /* =========================
+       MAIN CONTAINER
+    ========================== */
+    .container {
+      width: 100%;
+      max-width: 500px;
+
+      background: var(--card-color);
+
+      border-radius: var(--border-radius);
+
+      padding: 32px;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header-icon {
+      width: 90px;
+      height: 90px;
+
+      border-radius: 50%;
+      object-fit: cover;
+
+      margin-bottom: 18px;
+
+      border: 3px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--subtext-color);
+
+      line-height: 1.5;
+    }
+
+    /* =========================
+       BUTTON LIST
+    ========================== */
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      margin-bottom: 30px;
+    }
+
+    .link-button {
+      display: block;
+
+      width: 100%;
+      padding: 15px;
+
+      text-align: center;
+      text-decoration: none;
+
+      background: var(--primary-color);
+      color: white;
+
+      border-radius: 12px;
+
+      font-size: 16px;
+      font-weight: 600;
+      
+      -webkit-tap-highlight-color: transparent;
+
+      transition:
+        transform var(--transition-speed),
+        background var(--transition-speed);
+    }
+
+    .link-button:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .link-button:active {
+      transform: scale(0.98);
+    }
+    
+    .special-link-button {
+      display: block;
+
+      width: 100%;
+      padding: 15px;
+
+      text-align: center;
+      text-decoration: none;
+
+      background: var(--special-primary-color);
+      color: white;
+
+      border-radius: 12px;
+
+      font-size: 16px;
+      font-weight: 600;
+      
+      -webkit-tap-highlight-color: transparent;
+
+      transition:
+        transform var(--transition-speed),
+        background var(--transition-speed);
+    }
+
+    .special-link-button:hover {
+      background: var(--special-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .special-link-button:active {
+      transform: scale(0.98);
+    }
+
+    /* =========================
+       SOCIAL MEDIA
+    ========================== */
+    .social-section {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+
+      margin-bottom: 25px;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: var(--soft-color);
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      -webkit-tap-highlight-color: transparent;
+      
+      transition:
+        transform var(--transition-speed),
+        background var(--transition-speed);
+    }
+
+    .social-link:hover {
+      background: var(--soft-hover);
+      transform: translateY(-3px);
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+
+      object-fit: contain;
+    }
+
+    /* =========================
+       COPYRIGHT
+    ========================== */
+    .copyright {
+      text-align: center;
+    }
+
+    .copyright-link {
+      color: var(--subtext-color);
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      transition: color var(--transition-speed);
+    }
+
+    .copyright-link:hover {
+      color: white;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 480px) {
+      .container {
+        padding: 24px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .link-button {
+        font-size: 15px;
+      }
+
+      .header-icon {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <!-- ======================
+         HEADER
+    ======================= -->
+    <section class="header">
+
+      <!-- Header Image -->
+      <img
+        class="header-icon"
+        src="https://i.imgur.com/2DhmtJ4.png"
+        alt="Profile Icon"
+      />
+
+      <!-- Title -->
+      <h1 class="title">
+        AyyDev
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="subtitle">
+        Unlimited Creation!
+      </p>
+
+    </section>
+
+    <!-- ======================
+         BUTTON LIST
+    ======================= -->
+    <section class="button-list">
+
+      <a
+        class="special-link-button"
+        href="https://sociabuzz.com/ariyaxyz/donate"
+        target="_blank"
+      >
+        Donate
+      </a>
+
+      <a
+        class="link-button"
+        href="https://youtube.com"
+        target="_blank"
+      >
+        YouTube
+      </a>
+
+      <a
+        class="link-button"
+        href="https://github.com"
+        target="_blank"
+      >
+        GitHub
+      </a>
+
+      <a
+        class="link-button"
+        href="https://godotengine.org"
+        target="_blank"
+      >
+        Godot Engine
+      </a>
+
+    </section>
+
+    <!-- ======================
+         SOCIAL MEDIA
+    ======================= -->
+    <section class="social-section">
+
+      <!-- Instagram -->
+      <a
+        class="social-link"
+        href="https://instagram.com/"
+        target="_blank"
+      >
+        <img
+          class="social-icon"
+          src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+          alt="Instagram"
+        />
+      </a>
+
+      <!-- YouTube -->
+      <a
+        class="social-link"
+        href="https://youtube.com/"
+        target="_blank"
+      >
+        <img
+          class="social-icon"
+          src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+          alt="YouTube"
+        />
+      </a>
+
+      <!-- GitHub -->
+      <a
+        class="social-link"
+        href="https://github.com/"
+        target="_blank"
+      >
+        <img
+          class="social-icon"
+          src="https://cdn-icons-png.flaticon.com/512/733/733553.png"
+          alt="GitHub"
+        />
+      </a>
+
+      <!-- Discord -->
+      <a
+        class="social-link"
+        href="https://discord.com/"
+        target="_blank"
+      >
+        <img
+          class="social-icon"
+          src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
+          alt="Discord"
+        />
+      </a>
+
+    </section>
+
+    <!-- ======================
+         COPYRIGHT
+    ======================= -->
+    <section class="copyright">
+
+      <a
+        class="copyright-link"
+        href="https://id.wikipedia.org/wiki/Hak_cipta"
+        target="_blank"
+      >
+        ©2026 by AyyDev
+      </a>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
