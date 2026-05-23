@@ -6,6 +6,9 @@
 <html lang="id">
 <head>
 
+  <!-- =========================
+       META
+  ========================== -->
   <meta charset="UTF-8" />
 
   <meta
@@ -17,6 +20,9 @@
     About AyyDev
   </title>
 
+  <!-- =========================
+       STYLE
+  ========================== -->
   <style>
 
     /* =========================
@@ -28,6 +34,9 @@
       box-sizing: border-box;
     }
 
+    /* =========================
+       ROOT VARIABLES
+    ========================== */
     :root {
 
       --bg-color: #0f172a;
@@ -46,6 +55,9 @@
       --transition-speed: 0.2s;
     }
 
+    /* =========================
+       BODY
+    ========================== */
     body {
 
       font-family: Arial, sans-serif;
@@ -75,7 +87,8 @@
 
       padding: 32px;
 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.3);
     }
 
     /* =========================
@@ -106,7 +119,8 @@
 
       cursor: pointer;
 
-      transition: background var(--transition-speed);
+      transition:
+        background var(--transition-speed);
     }
 
     .back-button:hover {
@@ -124,7 +138,8 @@
     ========================== */
     .channel-card {
 
-      background: rgba(255,255,255,0.04);
+      background:
+        rgba(255,255,255,0.04);
 
       border-radius: 18px;
 
@@ -133,6 +148,9 @@
       margin-bottom: 30px;
     }
 
+    /* =========================
+       CHANNEL INFO
+    ========================== */
     .channel-info {
 
       display: flex;
@@ -153,6 +171,9 @@
       object-fit: cover;
 
       flex-shrink: 0;
+
+      border:
+        3px solid rgba(255,255,255,0.08);
     }
 
     .channel-name {
@@ -175,7 +196,7 @@
     ========================== */
     .goal-section {
 
-      margin-bottom: 30px;
+      margin-top: 10px;
     }
 
     .goal-header {
@@ -205,11 +226,12 @@
     .progress-bar {
 
       width: 100%;
-      height: 22px;
+      height: 24px;
 
       overflow: hidden;
 
-      background: rgba(255,255,255,0.08);
+      background:
+        rgba(255,255,255,0.08);
 
       border-radius: 999px;
 
@@ -219,8 +241,7 @@
     .progress-fill {
 
       height: 100%;
-
-      width: 24%;
+      width: 0%;
 
       background: linear-gradient(
         90deg,
@@ -230,7 +251,8 @@
 
       border-radius: 999px;
 
-      transition: width 0.4s ease;
+      transition:
+        width 0.4s ease;
     }
 
     .progress-text {
@@ -240,7 +262,8 @@
       top: 50%;
       left: 50%;
 
-      transform: translate(-50%, -50%);
+      transform:
+        translate(-50%, -50%);
 
       font-size: 13px;
       font-weight: bold;
@@ -249,11 +272,12 @@
     }
 
     /* =========================
-       ABOUT TEXT
+       ABOUT BOX
     ========================== */
     .about-box {
 
-      background: rgba(255,255,255,0.04);
+      background:
+        rgba(255,255,255,0.04);
 
       border-radius: 18px;
 
@@ -303,7 +327,6 @@
         width: 70px;
         height: 70px;
       }
-
     }
 
   </style>
@@ -312,6 +335,9 @@
 
 <body>
 
+  <!-- =========================
+       MAIN CONTAINER
+  ========================== -->
   <main class="container">
 
     <!-- ======================
@@ -319,6 +345,7 @@
     ======================= -->
     <section class="about-header">
 
+      <!-- BACK BUTTON -->
       <button
         class="back-button"
         onclick="goBack()"
@@ -326,6 +353,7 @@
         ❮
       </button>
 
+      <!-- PAGE TITLE -->
       <h1 class="about-title">
         About AyyDev
       </h1>
@@ -340,20 +368,31 @@
       <!-- CHANNEL INFO -->
       <div class="channel-info">
 
+        <!-- CHANNEL ICON -->
         <img
           class="channel-icon"
+          id="channel-icon"
           src="https://files.catbox.moe/ewikud.png"
-          alt="AyyDev Channel"
+          alt="Channel Icon"
         />
 
+        <!-- CHANNEL TEXT -->
         <div>
 
-          <h2 class="channel-name">
-            AyyDev
+          <!-- CHANNEL NAME -->
+          <h2
+            class="channel-name"
+            id="channel-name"
+          >
+            Loading...
           </h2>
 
-          <p class="channel-subs">
-            240 Subscribers
+          <!-- SUBSCRIBERS -->
+          <p
+            class="channel-subs"
+            id="channel-subs"
+          >
+            Loading subscribers...
           </p>
 
         </div>
@@ -363,6 +402,7 @@
       <!-- GOAL SECTION -->
       <section class="goal-section">
 
+        <!-- GOAL HEADER -->
         <div class="goal-header">
 
           <span class="goal-percent">
@@ -378,13 +418,18 @@
         <!-- PROGRESS BAR -->
         <div class="progress-bar">
 
+          <!-- PROGRESS FILL -->
           <div
             class="progress-fill"
-            style="width: 24%;"
+            id="progress-fill"
           ></div>
 
-          <div class="progress-text">
-            24%
+          <!-- PROGRESS TEXT -->
+          <div
+            class="progress-text"
+            id="progress-text"
+          >
+            0%
           </div>
 
         </div>
@@ -404,16 +449,17 @@
 
       <p class="about-text">
 
-        Halo! Saya AyyDev, developer indie yang
-        suka membuat game, eksperimen project,
+        Halo! Saya AyyDev,
+        developer indie yang suka membuat
+        game, eksperimen project,
         dan berbagai hal kreatif menggunakan
         Godot Engine.
 
         <br><br>
 
-        Fokus utama saya adalah membuat project
-        yang ringan, fun, dan bisa dimainkan
-        banyak orang.
+        Fokus utama saya adalah membuat
+        project yang ringan, fun,
+        dan bisa dimainkan banyak orang.
 
       </p>
 
@@ -426,11 +472,160 @@
   ========================== -->
   <script>
 
+    /* =========================
+       CONFIG
+    ========================== */
+
+    // YouTube API Key
+    const API_KEY =
+      "APIKEY_AKU";
+
+    // Channel ID
+    const CHANNEL_ID =
+      "UCGDirlA9l0kz9MPuZGVsYMA";
+
+    // Subscriber Goal
+    const SUBSCRIBER_TARGET =
+      1000;
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
     function goBack() {
 
       window.location.href =
         "../index.html";
     }
+
+    /* =========================
+       FORMAT NUMBER
+    ========================== */
+    function formatNumber(number) {
+
+      return new Intl.NumberFormat(
+        "id-ID"
+      ).format(number);
+    }
+
+    /* =========================
+       LOAD CHANNEL DATA
+    ========================== */
+    async function loadChannelData() {
+
+      try {
+
+        const response =
+          await fetch(
+            `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${CHANNEL_ID}&key=${API_KEY}`
+          );
+
+        const data =
+          await response.json();
+
+        console.log(data);
+
+        // Validate data
+        if (
+          !data.items ||
+          !data.items.length
+        ) {
+          return;
+        }
+
+        const channel =
+          data.items[0];
+
+        /* ======================
+           GET DATA
+        ======================= */
+
+        // Channel Name
+        const channelName =
+          channel.snippet.title;
+
+        // Channel Icon
+        const channelIcon =
+          channel.snippet
+            .thumbnails
+            .high
+            .url;
+
+        // Subscriber Count
+        const subscriberCount =
+          Number(
+            channel.statistics
+              .subscriberCount
+          );
+
+        /* ======================
+           CALCULATE PERCENT
+        ======================= */
+        const percent =
+          Math.min(
+            (
+              subscriberCount /
+              SUBSCRIBER_TARGET
+            ) * 100,
+            100
+          );
+
+        /* ======================
+           UPDATE UI
+        ======================= */
+
+        // Update Icon
+        document.getElementById(
+          "channel-icon"
+        ).src = channelIcon;
+
+        // Update Name
+        document.getElementById(
+          "channel-name"
+        ).textContent =
+          channelName;
+
+        // Update Subscribers
+        document.getElementById(
+          "channel-subs"
+        ).textContent =
+          `${formatNumber(subscriberCount)} Subscribers`;
+
+        // Update Progress Width
+        document.getElementById(
+          "progress-fill"
+        ).style.width =
+          `${percent}%`;
+
+        // Update Progress Text
+        document.getElementById(
+          "progress-text"
+        ).textContent =
+          `${percent.toFixed(1)}%`;
+
+      } catch(error) {
+
+        console.error(
+          "Failed loading channel:",
+          error
+        );
+
+        // Error UI
+        document.getElementById(
+          "channel-name"
+        ).textContent =
+          "Failed to load";
+
+        document.getElementById(
+          "channel-subs"
+        ).textContent =
+          "Unable to fetch subscribers";
+      }
+    }
+
+    /* =========================
+       INIT
+    ========================== */
+    loadChannelData();
 
   </script>
 
