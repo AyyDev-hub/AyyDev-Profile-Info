@@ -29,10 +29,11 @@
       --primary-color: #3b82f6;
       --primary-hover: #2563eb;
 
-      --special-primary-color: #F4AD3B; /*047857*/
+      --special-primary-color: #F4AD3B;
       --special-primary-hover: #065f46;
 
       --text-color: #ffffff;
+      --special-text-color: #442B03;
       --subtext-color: #cbd5e1;
 
       --soft-color: rgba(255,255,255,0.08);
@@ -124,8 +125,7 @@
       margin-bottom: 30px;
     }
 
-    .link-button,
-    .special-link-button {
+     .link-button {
 
       display: block;
 
@@ -139,6 +139,33 @@
       text-decoration: none;
 
       color: white;
+
+      font-size: 16px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      -webkit-tap-highlight-color: transparent;
+
+      transition:
+        transform var(--transition-speed),
+        background var(--transition-speed);
+    }
+     
+     .special-link-button {
+
+      display: block;
+
+      width: 100%;
+      padding: 15px;
+
+      border: none;
+      border-radius: 12px;
+
+      text-align: center;
+      text-decoration: none;
+
+      color: var(special-text-color);
 
       font-size: 16px;
       font-weight: 600;
