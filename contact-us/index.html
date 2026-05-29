@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us</title>
+</head>
+<body>
+
+<h1>Contact Us</h1>
+
+<form id="contactForm">
+
+    <!-- ========================= -->
+    <!-- PILIH AKSI -->
+    <!-- ========================= -->
+
+    <label>Pilih Aksi</label>
+    <br>
+
+    <select id="action" required>
+
+        <option value="">
+            -- Pilih Aksi --
+        </option>
+
+        <option value="Saran Fitur">
+            Saran Fitur
+        </option>
+
+        <option value="Bug Report">
+            Bug Report
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <!-- ========================= -->
+    <!-- PILIH GAME -->
+    <!-- ========================= -->
+
+    <label>Pilih Game</label>
+    <br>
+
+    <select id="game" required>
+
+        <option value="">
+            Loading game...
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <!-- ========================= -->
+    <!-- NAMA -->
+    <!-- ========================= -->
+
+    <label>Nama</label>
+    <br>
+
+    <input
+        type="text"
+        id="name"
+        required
+    >
+
+    <br><br>
+
+    <!-- ========================= -->
+    <!-- EMAIL -->
+    <!-- ========================= -->
+
+    <label>Email</label>
+    <br>
+
+    <input
+        type="email"
+        id="email"
+        required
+    >
+
+    <br><br>
+
+    <!-- ========================= -->
+    <!-- PESAN -->
+    <!-- ========================= -->
+
+    <label>Pesan</label>
+    <br>
+
+    <textarea
+        id="message"
+        rows="8"
+        cols="40"
+        required
+    ></textarea>
+
+    <br><br>
+
+    <!-- ========================= -->
+    <!-- IMAGE -->
+    <!-- ========================= -->
+
+    <label>Masukan Gambar (Opsional)</label>
+    <br>
+
+    <input
+        type="file"
+        id="image"
+        accept="image/*"
+    >
+
+    <br><br>
+
+    <!-- ========================= -->
+    <!-- BUTTON -->
+    <!-- ========================= -->
+
+    <button type="submit">
+
+        Kirim
+
+    </button>
+
+</form>
+
+<p id="status"></p>
+
+<script>
+
+// =====================================
+// API GAME LIST
+// =====================================
+
+const GAME_API =
+    "https://ayydev-games-api.akunffbya.workers.dev";
+
+// =====================================
+// DISCORD WEBHOOK
+// =====================================
+
+const WEBHOOK_URL =
+    "https://discord.com/api/webhooks/1509877286076153876/3mZG04i2CXJm51U5LCFCtgnoWnrJFnyKiDFMdr2NvyUPtAWsiYzc6OyC-VMrcP935Cry";
+
+// =====================================
+// ELEMENT
+// =====================================
+
+const gameSelect =
+    document.getElementById("game");
+
+const form =
+    document.getElementById("contactForm");
+
+const statusText =
+    document.getElementById("status");
+
+// =====================================
+// LOAD GAMES
+// =====================================
+
+async function loadGames(){
+
+    try {
+
+        const response =
+            await fetch(
+                `${GAME_API}?time=${Date.now()}`
+            );
+
+        const games =
+            await response.json();
+
+        gameSelect.innerHTML =
+            `
+            <option value="">
+                -- Pilih Game --
+            </option>
+            `;
+
+        games.forEach(game => {
+
+            gameSelect.innerHTML += `
+
+                <option value="${game.title}">
+
+                    ${game.title}
+
+                </option>
+            `;
+        });
+
+    } catch(err) {
+
+        console.error(err);
+
+        gameSelect.innerHTML =
+            `
+            <option>
+                Gagal memuat game
+            </option>
+            `;
+    }
+}
+
+// =====================================
+// IMAGE TO BASE64
+// =====================================
+
+function fileToBase64(file){
+
+    return new Promise((resolve) => {
+
+        if (!file) {
+
+            resolve(null);
+            return;
+        }
+
+        const reader =
+            new FileReader();
+
+        reader.onload = () => {
+
+            resolve(reader.result);
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+// =====================================
+// SUBMIT FORM
+// =====================================
+
+form.addEventListener(
+    "submit",
+    async (e) => {
+
+    e.preventDefault();
+
+    statusText.innerText =
+        "Mengirim...";
+
+    try {
+
+        // =========================
+        // GET VALUES
+        // =========================
+
+        const action =
+            document.getElementById("action")
+            .value;
+
+        const game =
+            document.getElementById("game")
+            .value;
+
+        const name =
+            document.getElementById("name")
+            .value;
+
+        const email =
+            document.getElementById("email")
+            .value;
+
+        const message =
+            document.getElementById("message")
+            .value;
+
+        const imageFile =
+            document.getElementById("image")
+            .files[0];
+
+        // =========================
+        // BASE64 IMAGE
+        // =========================
+
+        const imageBase64 =
+            await fileToBase64(
+                imageFile
+            );
+
+        // =========================
+        // DISCORD MESSAGE
+        // =========================
+
+        const content =
+
+`📩 CONTACT US
+
+🎯 Aksi:
+${action}
+
+🎮 Game:
+${game}
+
+👤 Nama:
+${name}
+
+📧 Email:
+${email}
+
+💬 Pesan:
+${message}
+
+🖼️ Image:
+${imageBase64 || "Tidak ada"}
+`;
+
+        // =========================
+        // SEND WEBHOOK
+        // =========================
+
+        await fetch(
+
+            WEBHOOK_URL,
+
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    content
+                })
+            }
+        );
+
+        statusText.innerText =
+            "Berhasil dikirim!";
+
+        form.reset();
+
+    } catch(err) {
+
+        console.error(err);
+
+        statusText.innerText =
+            "Gagal mengirim.";
+    }
+});
+
+// =====================================
+// START
+// =====================================
+
+loadGames();
+
+</script>
+
+</body>
+</html>
