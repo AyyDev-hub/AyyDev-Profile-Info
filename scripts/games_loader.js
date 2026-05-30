@@ -3,5 +3,5 @@ export async function getGames() {
     `https://ayydev-games-api.akunffbya.workers.dev?time=${Date.now()}`
   );
   
-  return response.json()
+  return await response.json()
 }
