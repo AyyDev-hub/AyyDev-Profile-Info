@@ -1,7 +1,10 @@
 import { getGames } from "./games_loader.js"
 
+/* =========================
+   BACK BUTTON
+========================== */
 function goBack() {
-  window.location.href = "../index.html";
+    window.location.href = "../index.html";
 }
 
 async function loadGames() {
