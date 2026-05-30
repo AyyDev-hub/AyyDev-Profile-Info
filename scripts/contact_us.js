@@ -1,4 +1,4 @@
-import { getGames } from "./games_loader"
+import { getGames } from "./games_loader.js"
 // =====================================
 // DISCORD WEBHOOK
 // =====================================
