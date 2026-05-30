@@ -5,23 +5,21 @@ function goBack() {
 }
 
 async function loadGames() {
-  const games = document.getElementById("games");
+  const gameshtml = document.getElementById("games");
 
   try {
-    const data = games;
-
-    console.log(data);
+    console.log(games);
 
     // Validasi array
-    if (!Array.isArray(data)) {
-      games.innerHTML = "<p>Data game invalid.</p>";
+    if (!Array.isArray(games)) {
+      gameshtml.innerHTML = "<p>Data game invalid.</p>";
       return;
     }
 
-    games.innerHTML = "";
+    gameshtml.innerHTML = "";
 
-    data.forEach(game => {
-      games.innerHTML += `
+    games.forEach(game => {
+      gameshtml.innerHTML += `
         <div class="card">
           <img
             src="${game.image}"
@@ -48,7 +46,7 @@ async function loadGames() {
   } catch (err) {
     console.error(err);
 
-    games.innerHTML =
+    gameshtml.innerHTML =
       "<p>Gagal mengambil game.</p>";
   }
 }
