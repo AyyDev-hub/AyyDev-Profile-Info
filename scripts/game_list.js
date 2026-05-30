@@ -3,7 +3,7 @@ import { getGames } from "./games_loader.js"
 /* =========================
    BACK BUTTON
 ========================== */
-function goBack() {
+window.goBack = function goBack() {
     window.location.href = "../index.html";
 }
 
