@@ -1,48 +1,54 @@
-import { getGames } from "./games_loader.js"
-// =====================================
-// DISCORD WEBHOOK
-// =====================================
+import { getGames }
+from "./games_loader.js";
 
 const WEBHOOK_URL =
     "https://discord.com/api/webhooks/1509877286076153876/3mZG04i2CXJm51U5LCFCtgnoWnrJFnyKiDFMdr2NvyUPtAWsiYzc6OyC-VMrcP935Cry";
 
-// =====================================
-// ELEMENT
-// =====================================
-
 const gameSelect =
-    document.getElementById("game");
+    document.getElementById(
+        "game"
+    );
 
 const form =
-    document.getElementById("contactForm");
+    document.getElementById(
+        "contactForm"
+    );
 
 const statusText =
-    document.getElementById("status");
-    
-// =====================================
-// BOT CHECK
-// =====================================
-    
-let turnstileVerified = false;
+    document.getElementById(
+        "status"
+    );
 
-window.turnstileSuccess = async function turnstileSuccess() {
+let turnstileVerified =
+    false;
 
-    turnstileVerified = true;
+// ======================
+// TURNSTILE CALLBACK
+// ======================
 
-    document
-        .getElementById(
-            "submitBtn"
-        )
-        .disabled = false;
-}
+window.turnstileSuccess =
+    function() {
 
-// =====================================
+        turnstileVerified =
+            true;
+
+        document
+            .getElementById(
+                "submitBtn"
+            )
+            .disabled = false;
+    };
+
+// ======================
 // LOAD GAMES
-// =====================================
+// ======================
 
-async function loadGames(){
+async function loadGames() {
+
     try {
-        const games = await getGames();
+
+        const games =
+            await getGames();
 
         gameSelect.innerHTML =
             `
@@ -53,14 +59,13 @@ async function loadGames(){
 
         games.forEach(game => {
 
-            gameSelect.innerHTML += `
+            gameSelect.innerHTML +=
 
+                `
                 <option value="${game.title}">
-
                     ${game.title}
-
                 </option>
-            `;
+                `;
         });
 
     } catch(err) {
@@ -68,82 +73,99 @@ async function loadGames(){
         console.error(err);
 
         gameSelect.innerHTML =
+
             `
-            <option>
+            <option value="">
                 Gagal memuat game
             </option>
             `;
     }
 }
 
-// =====================================
-// SUBMIT FORM
-// =====================================
+loadGames();
+
+// ======================
+// SUBMIT
+// ======================
 
 form.addEventListener(
+
     "submit",
+
     async (e) => {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    if (!turnstileVerified) {
+        if (
+            !turnstileVerified
+        ) {
 
-        alert(
-            "Silakan verifikasi bahwa Anda bukan robot terlebih dahulu."
-        );
+            alert(
+                "Silakan verifikasi bahwa Anda bukan robot."
+            );
 
-        return;
-    }
+            return;
+        }
 
-    statusText.innerText =
-        "Mengirim...";
+        statusText.textContent =
+            "Mengirim...";
 
-    try {
+        try {
 
-        // =========================
-        // GET VALUES
-        // =========================
+            const action =
+                document
+                .getElementById(
+                    "action"
+                )
+                .value;
 
-        const action =
-            document.getElementById("action")
-            .value;
+            const game =
+                document
+                .getElementById(
+                    "game"
+                )
+                .value;
 
-        const game =
-            document.getElementById("game")
-            .value;
+            const name =
+                document
+                .getElementById(
+                    "name"
+                )
+                .value;
 
-        const name =
-            document.getElementById("name")
-            .value;
+            const email =
+                document
+                .getElementById(
+                    "email"
+                )
+                .value;
 
-        const email =
-            document.getElementById("email")
-            .value;
+            const message =
+                document
+                .getElementById(
+                    "message"
+                )
+                .value;
 
-        const message =
-            document.getElementById("message")
-            .value;
+            const imageFile =
+                document
+                .getElementById(
+                    "image"
+                )
+                .files[0];
 
-        const imageFile =
-            document.getElementById("image")
-            .files[0];
+            const formData =
+                new FormData();
 
-        // =========================
-        // FORM DATA
-        // =========================
+            formData.append(
 
-        const formData =
-            new FormData();
+                "payload_json",
 
-        formData.append(
+                JSON.stringify({
 
-            "payload_json",
+                    content:
 
-            JSON.stringify({
-
-                content:
-
-        `📩 CONTACT US
+`📩 CONTACT US
 
 🎯 Aksi:
 ${action}
@@ -159,55 +181,51 @@ ${email}
 
 💬 Pesan:
 ${message}`
-            })
-        );
-
-        // =========================
-        // ATTACH IMAGE
-        // =========================
-
-        if (imageFile) {
-
-            formData.append(
-
-                "files[0]",
-
-                imageFile
+                })
             );
-        }
 
-        // =========================
-        // SEND WEBHOOK
-        // =========================
+            if (imageFile) {
 
-        await fetch(
+                formData.append(
 
-            WEBHOOK_URL,
+                    "files[0]",
 
-            {
-
-                method: "POST",
-
-                body: formData
+                    imageFile
+                );
             }
-        );
 
-        statusText.innerText =
-            "Berhasil dikirim!";
+            await fetch(
 
-        form.reset();
+                WEBHOOK_URL,
 
-    } catch(err) {
+                {
 
-        console.error(err);
+                    method: "POST",
 
-        statusText.innerText =
-            "Gagal mengirim.";
+                    body: formData
+                }
+            );
+
+            statusText.textContent =
+                "Berhasil dikirim!";
+
+            form.reset();
+
+            turnstileVerified =
+                false;
+
+            document
+                .getElementById(
+                    "submitBtn"
+                )
+                .disabled = true;
+
+        } catch(err) {
+
+            console.error(err);
+
+            statusText.textContent =
+                "Gagal mengirim.";
+        }
     }
-});
-
-// =====================================
-// START
-// =====================================
-
-loadGames();
+);
