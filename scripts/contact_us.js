@@ -41,11 +41,8 @@ async function turnstileSuccess() {
 // =====================================
 
 async function loadGames(){
-
     try {
-
-        const games =
-            await getGames();
+        const games = await getGames();
 
         gameSelect.innerHTML =
             `
