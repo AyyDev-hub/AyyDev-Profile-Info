@@ -119,12 +119,23 @@
     <!-- BUTTON -->
     <!-- ========================= -->
 
-    <button type="submit">
+    <div
+        class="cf-turnstile"
+        data-sitekey="SITE_KEY_KAMU"
+        data-callback="turnstileSuccess">
+    </div>
+
+    <br>
+
+    <button
+        type="submit"
+        id="submitBtn"
+        disabled>
 
         Kirim
 
     </button>
-
+    
 </form>
 
 <p id="status"></p>
