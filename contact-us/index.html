@@ -121,7 +121,7 @@
 
     <div
         class="cf-turnstile"
-        data-sitekey="SITE_KEY_KAMU"
+        data-sitekey="0x4AAAAAADZEfJ_y69ct0l2O"
         data-callback="turnstileSuccess">
     </div>
 
@@ -168,10 +168,14 @@ const form =
 
 const statusText =
     document.getElementById("status");
-
+    
+// =====================================
+// BOT CHECK
+// =====================================
+    
 let turnstileVerified = false;
 
-function turnstileSuccess() {
+async function turnstileSuccess() {
 
     turnstileVerified = true;
 
