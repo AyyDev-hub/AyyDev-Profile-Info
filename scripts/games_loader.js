@@ -1,7 +1,11 @@
 import { games } from "./config.js"
 
-export function getGames() {
+export function loadGames() {
   const response = await fetch(
     `https://ayydev-games-api.akunffbya.workers.dev?time=${Date.now()}`
-  ).json();
+  );
+  
+  games = await response.json();
 }
+
+loadGames()
