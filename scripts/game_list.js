@@ -1,4 +1,4 @@
-import { games } from "./config.js"
+import { data } from "./config.js"
 
 function goBack() {
   window.location.href = "../index.html";
@@ -8,6 +8,8 @@ async function loadGames() {
   const gameshtml = document.getElementById("games");
 
   try {
+    const games = data.games
+    
     console.log(games);
 
     // Validasi array
