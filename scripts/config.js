@@ -1,1 +1,1 @@
-var games = []
+export var games = []
