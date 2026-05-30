@@ -33,7 +33,7 @@ async function turnstileSuccess() {
         .getElementById(
             "submitBtn"
         )
-        //.disabled = false;
+        .disabled = false;
 }
 
 // =====================================
