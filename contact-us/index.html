@@ -169,6 +169,19 @@ const form =
 const statusText =
     document.getElementById("status");
 
+let turnstileVerified = false;
+
+function turnstileSuccess() {
+
+    turnstileVerified = true;
+
+    document
+        .getElementById(
+            "submitBtn"
+        )
+        .disabled = false;
+}
+
 // =====================================
 // LOAD GAMES
 // =====================================
