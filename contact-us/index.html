@@ -240,6 +240,15 @@ form.addEventListener(
 
     e.preventDefault();
 
+    if (!turnstileVerified) {
+
+        alert(
+            "Silakan verifikasi bahwa Anda bukan robot terlebih dahulu."
+        );
+
+        return;
+    }
+
     statusText.innerText =
         "Mengirim...";
 
