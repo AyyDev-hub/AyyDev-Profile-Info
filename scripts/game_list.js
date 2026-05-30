@@ -1,4 +1,4 @@
-import { data } from "./config.js"
+import { getGames } from "./game_loader.js"
 
 function goBack() {
   window.location.href = "../index.html";
@@ -8,7 +8,7 @@ async function loadGames() {
   const gameshtml = document.getElementById("games");
 
   try {
-    const games = data.games
+    const games = getGames()
     
     console.log(games);
 
