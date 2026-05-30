@@ -1,4 +1,4 @@
-import getGames from "games_loader.js"
+import getGames from "./games_loader.js"
 
 function goBack() {
   window.location.href = "../index.html";
