@@ -1,1 +1,1 @@
-inport { games } 
+import { games } from "./config.js"
