@@ -1,3 +1,5 @@
+import {getGames} from "./game_loader"
+
 function goBack() {
   window.location.href = "../index.html";
 }
@@ -6,11 +8,7 @@ async function loadGames() {
   const games = document.getElementById("games");
 
   try {
-    const response = await fetch(
-      `https://ayydev-games-api.akunffbya.workers.dev?time=${Date.now()}`
-    );
-
-    const data = await response.json();
+    const data = await getGames();
 
     console.log(data);
 
