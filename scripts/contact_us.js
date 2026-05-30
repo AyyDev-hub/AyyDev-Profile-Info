@@ -1,10 +1,4 @@
-// =====================================
-// API GAME LIST
-// =====================================
-
-const GAME_API =
-    "https://ayydev-games-api.akunffbya.workers.dev";
-
+import { getGames } from "./games_loader"
 // =====================================
 // DISCORD WEBHOOK
 // =====================================
@@ -50,13 +44,8 @@ async function loadGames(){
 
     try {
 
-        const response =
-            await fetch(
-                `${GAME_API}?time=${Date.now()}`
-            );
-
         const games =
-            await response.json();
+            await getGames();
 
         gameSelect.innerHTML =
             `
