@@ -25,7 +25,7 @@ const statusText =
     
 let turnstileVerified = false;
 
-async function turnstileSuccess() {
+window.turnstileSuccess = async function turnstileSuccess() {
 
     turnstileVerified = true;
 
