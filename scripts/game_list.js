@@ -8,7 +8,7 @@ async function loadGames() {
   const gameshtml = document.getElementById("games");
 
   try {
-    const games = getGames()
+    const games = await getGames()
     
     console.log(games);
 
