@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Contact Us</title>
+
 </head>
 <body>
 
 <h1>Contact Us</h1>
 
 <form id="contactForm">
-
-    <!-- ========================= -->
-    <!-- PILIH AKSI -->
-    <!-- ========================= -->
 
     <label>Pilih Aksi</label>
     <br>
@@ -37,26 +35,18 @@
 
     <br><br>
 
-    <!-- ========================= -->
-    <!-- PILIH GAME -->
-    <!-- ========================= -->
-
     <label>Pilih Game</label>
     <br>
 
     <select id="game" required>
 
         <option value="">
-            Loading game...
+            Loading...
         </option>
 
     </select>
 
     <br><br>
-
-    <!-- ========================= -->
-    <!-- NAMA -->
-    <!-- ========================= -->
 
     <label>Nama</label>
     <br>
@@ -69,10 +59,6 @@
 
     <br><br>
 
-    <!-- ========================= -->
-    <!-- EMAIL -->
-    <!-- ========================= -->
-
     <label>Email</label>
     <br>
 
@@ -83,10 +69,6 @@
     >
 
     <br><br>
-
-    <!-- ========================= -->
-    <!-- PESAN -->
-    <!-- ========================= -->
 
     <label>Pesan</label>
     <br>
@@ -100,10 +82,6 @@
 
     <br><br>
 
-    <!-- ========================= -->
-    <!-- IMAGE -->
-    <!-- ========================= -->
-
     <label>Masukan Gambar (Opsional)</label>
     <br>
 
@@ -114,10 +92,6 @@
     >
 
     <br><br>
-
-    <!-- ========================= -->
-    <!-- BUTTON -->
-    <!-- ========================= -->
 
     <div
         class="cf-turnstile"
@@ -131,11 +105,11 @@
         type="submit"
         id="submitBtn"
         disabled>
-        
+
         Kirim
 
     </button>
-    
+
 </form>
 
 <p id="status"></p>
@@ -145,10 +119,10 @@ src="https://challenges.cloudflare.com/turnstile/v0/api.js"
 async
 defer>
 </script>
+
 <script
 type="module"
-src="scripts/contact_us.js"
-defer>
+src="./contact_us.js">
 </script>
 
 </body>
