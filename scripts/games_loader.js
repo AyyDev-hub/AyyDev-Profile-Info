@@ -7,5 +7,3 @@ export function loadGames() {
   
   games = await response.json();
 }
-
-loadGames()
