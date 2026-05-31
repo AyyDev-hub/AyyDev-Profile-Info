@@ -38,13 +38,6 @@ window.onload = () => {
 
                 turnstileVerified = true;
 
-                alert("done")
-
-                //document
-                    //.getElementById(
-                        //"submitBtn"
-                    //)
-                    //.disabled = false;
             }
         }
     );
