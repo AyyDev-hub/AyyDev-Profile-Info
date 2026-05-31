@@ -3,115 +3,461 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Contact Us</title>
+
+<style>
+
+  /* =========================
+     RESET
+  ========================== */
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  /* =========================
+     ROOT
+  ========================== */
+  :root{
+
+    --bg-color:#0f172a;
+    --card-color:#1e293b;
+
+    --primary-color:#3b82f6;
+    --primary-hover:#2563eb;
+
+    --text-color:#ffffff;
+    --subtext-color:#cbd5e1;
+
+    --soft-color:rgba(255,255,255,0.08);
+    --soft-hover:rgba(255,255,255,0.15);
+
+    --border-radius:16px;
+    --transition-speed:0.2s;
+  }
+
+  /* =========================
+     BODY
+  ========================== */
+  body{
+
+    font-family:Arial,sans-serif;
+
+    background:var(--bg-color);
+    color:var(--text-color);
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+
+    padding:20px;
+  }
+
+  /* =========================
+     CONTAINER
+  ========================== */
+  .container{
+
+    width:100%;
+    max-width:700px;
+
+    background:var(--card-color);
+
+    border-radius:var(--border-radius);
+
+    padding:32px;
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  /* =========================
+     HEADER
+  ========================== */
+  .page-header{
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:30px;
+  }
+
+  .back-button{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:12px;
+
+    background:var(--soft-color);
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:
+      background var(--transition-speed);
+  }
+
+  .back-button:hover{
+    background:var(--soft-hover);
+  }
+
+  .page-title{
+
+    font-size:28px;
+    font-weight:bold;
+  }
+
+  /* =========================
+     FORM CARD
+  ========================== */
+  .form-card{
+
+    background:
+      rgba(255,255,255,0.04);
+
+    border-radius:18px;
+
+    padding:24px;
+  }
+
+  /* =========================
+     FORM
+  ========================== */
+  .form-group{
+
+    margin-bottom:20px;
+  }
+
+  .form-label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+    font-weight:600;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+    border-radius:12px;
+
+    background:
+      rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder{
+    color:#94a3b8;
+  }
+
+  .form-textarea{
+
+    resize:vertical;
+
+    min-height:180px;
+  }
+
+  .form-file{
+
+    width:100%;
+  }
+
+  /* =========================
+     BUTTON
+  ========================== */
+  .submit-button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    background:
+      var(--primary-color);
+
+    color:white;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:
+      background var(--transition-speed),
+      transform var(--transition-speed);
+  }
+
+  .submit-button:hover{
+
+    background:
+      var(--primary-hover);
+
+    transform:
+      translateY(-2px);
+  }
+
+  .submit-button:active{
+
+    transform:
+      scale(0.98);
+  }
+
+  /* =========================
+     STATUS
+  ========================== */
+  .status{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    color:var(--subtext-color);
+  }
+
+  /* =========================
+     RESPONSIVE
+  ========================== */
+  @media (max-width:480px){
+
+    .container{
+      padding:24px;
+    }
+
+    .page-title{
+      font-size:24px;
+    }
+  }
+
+</style>
 
 </head>
 <body>
 
-<h1>Contact Us</h1>
+<main class="container">
 
-<form id="contactForm">
-
-    <label>Pilih Aksi</label>
-    <br>
-
-    <select id="action" required>
-
-        <option value="">
-            -- Pilih Aksi --
-        </option>
-
-        <option value="Saran Fitur">
-            Saran Fitur
-        </option>
-
-        <option value="Bug Report">
-            Bug Report
-        </option>
-
-    </select>
-
-    <br><br>
-
-    <label>Pilih Game</label>
-    <br>
-
-    <select id="game" required>
-
-        <option value="">
-            Loading...
-        </option>
-
-    </select>
-
-    <br><br>
-
-    <label>Nama</label>
-    <br>
-
-    <input
-        type="text"
-        id="name"
-        required
-    >
-
-    <br><br>
-
-    <label>Email</label>
-    <br>
-
-    <input
-        type="email"
-        id="email"
-        required
-    >
-
-    <br><br>
-
-    <label>Pesan</label>
-    <br>
-
-    <textarea
-        id="message"
-        rows="8"
-        cols="40"
-        required
-    ></textarea>
-
-    <br><br>
-
-    <label>Masukan Gambar (Opsional)</label>
-    <br>
-
-    <input
-        type="file"
-        id="image"
-        accept="image/*"
-    >
-
-    <br><br>
-
-    <div
-        id="turnstile-widget"
-        class="cf-turnstile"
-        data-sitekey="0x4AAAAAADZEfJ_y69ct0l2O">
-    </div>
-
-    <br>
+  <!-- ======================
+       HEADER
+  ======================= -->
+  <section class="page-header">
 
     <button
-        type="submit"
-        id="submitBtn">
-
-        Kirim
-
+      class="back-button"
+      onclick="goBack()"
+    >
+      ❮
     </button>
 
-</form>
+    <h1 class="page-title">
+      Contact Us
+    </h1>
 
-<p id="status"></p>
+  </section>
+
+  <!-- ======================
+       FORM CARD
+  ======================= -->
+  <section class="form-card">
+
+    <form id="contactForm">
+
+      <!-- ACTION -->
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="action"
+        >
+          Pilih Aksi
+        </label>
+
+        <select
+          class="form-select"
+          id="action"
+          required
+        >
+
+          <option value="">
+            -- Pilih Aksi --
+          </option>
+
+          <option value="Saran Fitur">
+            Saran Fitur
+          </option>
+
+          <option value="Bug Report">
+            Bug Report
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- GAME -->
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="game"
+        >
+          Pilih Game
+        </label>
+
+        <select
+          class="form-select"
+          id="game"
+          required
+        >
+
+          <option value="">
+            Loading...
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- NAME -->
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="name"
+        >
+          Nama
+        </label>
+
+        <input
+          class="form-input"
+          type="text"
+          id="name"
+          required
+        >
+
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="email"
+        >
+          Email
+        </label>
+
+        <input
+          class="form-input"
+          type="email"
+          id="email"
+          required
+        >
+
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="message"
+        >
+          Pesan
+        </label>
+
+        <textarea
+          class="form-textarea"
+          id="message"
+          required
+        ></textarea>
+
+      </div>
+
+      <!-- IMAGE -->
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="image"
+        >
+          Masukan Gambar (Opsional)
+        </label>
+
+        <input
+          class="form-file"
+          type="file"
+          id="image"
+          accept="image/*"
+        >
+
+      </div>
+
+      <!-- TURNSTILE -->
+      <div
+        id="turnstile-widget"
+        class="cf-turnstile"
+        data-sitekey="0x4AAAAAADZEfJ_y69ct0l2O"
+      ></div>
+
+      <br>
+
+      <!-- SUBMIT -->
+      <button
+        type="submit"
+        id="submitBtn"
+        class="submit-button"
+      >
+        Kirim
+      </button>
+
+    </form>
+
+    <p
+      id="status"
+      class="status"
+    ></p>
+
+  </section>
+
+</main>
+
+<script>
+
+  function goBack(){
+
+    window.location.href =
+      "../index.html";
+  }
+
+</script>
 
 <script
 src="https://challenges.cloudflare.com/turnstile/v0/api.js"
