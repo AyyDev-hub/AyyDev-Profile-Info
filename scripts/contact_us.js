@@ -36,7 +36,7 @@ window.turnstileSuccess =
             .getElementById(
                 "submitBtn"
             )
-            .disabled = false;
+            //.disabled = false;
     };
 
 // ======================
@@ -218,7 +218,7 @@ ${message}`
                 .getElementById(
                     "submitBtn"
                 )
-                .disabled = true;
+                //.disabled = true;
 
         } catch(err) {
 
