@@ -1,6 +1,13 @@
 import { getGames }
 from "./games_loader.js";
 
+/* =========================
+   BACK BUTTON
+========================== */
+window.goBack = function goBack() {
+    window.location.href = "../index.html";
+}
+
 const WEBHOOK_URL =
     "https://discord.com/api/webhooks/1509877286076153876/3mZG04i2CXJm51U5LCFCtgnoWnrJFnyKiDFMdr2NvyUPtAWsiYzc6OyC-VMrcP935Cry";
 
