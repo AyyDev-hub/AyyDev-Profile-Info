@@ -26,15 +26,28 @@ let turnstileVerified =
 // TURNSTILE CALLBACK
 // ======================
 
-globalThis.turnstileSuccess = function() {
+window.onload = () => {
 
-    alert("Turnstile berhasil!");
+    turnstile.render(
+        "#turnstile-widget",
 
-    turnstileVerified = true;
+        {
+            sitekey: "0x4AAAAAADZEfJ_y69ct0l2O",
 
-    //document
-        //.getElementById("submitBtn")
-        //.disabled = false;
+            callback: () => {
+
+                turnstileVerified = true;
+
+                alert("done)
+
+                //document
+                    //.getElementById(
+                        //"submitBtn"
+                    //)
+                    //.disabled = false;
+            }
+        }
+    );
 };
 
 // ======================
