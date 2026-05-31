@@ -38,7 +38,7 @@ window.onload = () => {
 
                 turnstileVerified = true;
 
-                alert("done)
+                alert("done")
 
                 //document
                     //.getElementById(
