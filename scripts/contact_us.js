@@ -26,17 +26,16 @@ let turnstileVerified =
 // TURNSTILE CALLBACK
 // ======================
 
-window.turnstileSuccess = function turnstileSuccess() {
+window.turnstileSuccess = function(token) {
 
-        turnstileVerified =
-            true;
+    alert("Turnstile berhasil!");
 
-        document
-            .getElementById(
-                "submitBtn"
-            )
-            //.disabled = false;
-    };
+    turnstileVerified = true;
+
+    document
+        .getElementById("submitBtn")
+        //.disabled = false;
+};
 
 // ======================
 // LOAD GAMES
