@@ -26,14 +26,14 @@ let turnstileVerified =
 // TURNSTILE CALLBACK
 // ======================
 
-window.turnstileSuccess = function(token) {
+globalThis.turnstileSuccess = function() {
 
     alert("Turnstile berhasil!");
 
     turnstileVerified = true;
 
-    document
-        .getElementById("submitBtn")
+    //document
+        //.getElementById("submitBtn")
         //.disabled = false;
 };
 
