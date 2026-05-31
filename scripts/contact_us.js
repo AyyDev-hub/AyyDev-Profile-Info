@@ -26,8 +26,7 @@ let turnstileVerified =
 // TURNSTILE CALLBACK
 // ======================
 
-window.turnstileSuccess =
-    function() {
+window.turnstileSuccess = function turnstileSuccess() {
 
         turnstileVerified =
             true;
