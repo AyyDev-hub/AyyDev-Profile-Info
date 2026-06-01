@@ -182,14 +182,16 @@ async function loadGames() {
 
         games.forEach(game => {
 
-            gameSelect.innerHTML +=
+            gameSelect.innerHTML += `
 
-                `
                 <option value="${game.title}">
                     ${game.title}
                 </option>
-                `;
+
+            `;
         });
+
+        fillFromUrl(games);
 
     } catch(err) {
 
