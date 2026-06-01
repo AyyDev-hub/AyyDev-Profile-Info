@@ -54,6 +54,118 @@ window.onload = () => {
 // LOAD GAMES
 // ======================
 
+function fillFromUrl(games) {
+
+    const params =
+        new URLSearchParams(
+            location.search
+        );
+
+    // ======================
+    // TYPE INDEX
+    // ======================
+
+    const typeIndex =
+        parseInt(
+            params.get("type")
+        );
+
+    if (
+        !isNaN(typeIndex)
+    ) {
+
+        const actionSelect =
+            document.getElementById(
+                "action"
+            );
+
+        if (
+            typeIndex >= 0 &&
+            typeIndex <
+            actionSelect.options.length
+        ) {
+
+            actionSelect.selectedIndex =
+                typeIndex;
+        }
+    }
+
+    // ======================
+    // GAME INDEX
+    // ======================
+
+    const gameIndex =
+        parseInt(
+            params.get("game")
+        );
+
+    if (
+        !isNaN(gameIndex)
+    ) {
+
+        if (
+            gameIndex >= 0 &&
+            gameIndex < games.length
+        ) {
+
+            document
+                .getElementById(
+                    "game"
+                )
+                .value =
+                games[gameIndex].title;
+        }
+    }
+
+    // ======================
+    // NAME
+    // ======================
+
+    const name =
+        params.get("name");
+
+    if (name) {
+
+        document
+            .getElementById(
+                "name"
+            )
+            .value = name;
+    }
+
+    // ======================
+    // EMAIL
+    // ======================
+
+    const email =
+        params.get("email");
+
+    if (email) {
+
+        document
+            .getElementById(
+                "email"
+            )
+            .value = email;
+    }
+
+    // ======================
+    // MESSAGE
+    // ======================
+
+    const message =
+        params.get("message");
+
+    if (message) {
+
+        document
+            .getElementById(
+                "message"
+            )
+            .value = message;
+    }
+}
+
 async function loadGames() {
 
     try {
