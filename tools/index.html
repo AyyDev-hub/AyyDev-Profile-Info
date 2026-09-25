@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <!-- =========================
+       META
+  ========================== -->
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    AyyDev Tools
+  </title>
+
+
+  <!-- =========================
+       STYLE
+  ========================== -->
+  <style>
+
+    /* =========================
+       RESET
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    /* =========================
+       ROOT
+    ========================== */
+    :root {
+
+      --bg-color: #0f172a;
+      --card-color: #1e293b;
+
+      --primary-color: #3b82f6;
+      --primary-hover: #2563eb;
+
+      --text-color: #ffffff;
+      --subtext-color: #cbd5e1;
+
+      --soft-color: rgba(255, 255, 255, 0.08);
+      --soft-hover: rgba(255, 255, 255, 0.15);
+
+      --border-radius: 16px;
+      --transition-speed: 0.2s;
+    }
+
+
+    /* =========================
+       BODY
+    ========================== */
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background: var(--bg-color);
+      color: var(--text-color);
+
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+
+    /* =========================
+       MAIN CONTAINER
+    ========================== */
+    .container {
+
+      width: 100%;
+      max-width: 700px;
+
+      background: var(--card-color);
+
+      border-radius: var(--border-radius);
+
+      padding: 32px;
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+
+    /* =========================
+       PAGE HEADER
+    ========================== */
+    .page-header {
+
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 30px;
+    }
+
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+    .back-button {
+
+      width: 45px;
+      height: 45px;
+
+      border: none;
+      border-radius: 12px;
+
+      background: var(--soft-color);
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      transition:
+        background var(--transition-speed),
+        transform var(--transition-speed);
+    }
+
+    .back-button:hover {
+
+      background: var(--soft-hover);
+
+      transform: translateX(-2px);
+    }
+
+
+    /* =========================
+       PAGE TITLE
+    ========================== */
+    .page-title {
+
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       TOOLS LIST
+    ========================== */
+    .tools-list {
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 20px;
+    }
+
+
+    /* =========================
+       TOOL CARD
+    ========================== */
+    .tool-card {
+
+      overflow: hidden;
+
+      background:
+        rgba(255, 255, 255, 0.04);
+
+      border-radius: 16px;
+    }
+
+
+    /* =========================
+       TOOL PREVIEW
+    ========================== */
+    .tool-image {
+
+      width: 100%;
+      height: 220px;
+
+      display: block;
+
+      object-fit: cover;
+
+      background:
+        rgba(255, 255, 255, 0.05);
+    }
+
+
+    /* =========================
+       TOOL CONTENT
+    ========================== */
+    .tool-content {
+
+      padding: 18px;
+    }
+
+
+    /* =========================
+       TOOL TITLE
+    ========================== */
+    .tool-title {
+
+      font-size: 22px;
+
+      margin-bottom: 15px;
+    }
+
+
+    /* =========================
+       VISIT BUTTON
+    ========================== */
+    .visit-button {
+
+      display: inline-block;
+
+      padding: 12px 18px;
+
+      border-radius: 12px;
+
+      background:
+        var(--primary-color);
+
+      color: white;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      transition:
+        background var(--transition-speed),
+        transform var(--transition-speed);
+    }
+
+    .visit-button:hover {
+
+      background:
+        var(--primary-hover);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+    .message {
+
+      text-align: center;
+
+      color: var(--subtext-color);
+
+      padding: 20px 0;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 480px) {
+
+      .container {
+        padding: 24px;
+      }
+
+      .page-title {
+        font-size: 24px;
+      }
+
+      .tool-title {
+        font-size: 20px;
+      }
+
+      .tool-image {
+        height: 190px;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- =========================
+       MAIN CONTAINER
+  ========================== -->
+  <main class="container">
+
+
+    <!-- ======================
+         PAGE HEADER
+    ======================= -->
+    <section class="page-header">
+
+      <button
+        class="back-button"
+        onclick="goBack()"
+        aria-label="Back"
+      >
+        ❮
+      </button>
+
+      <h1 class="page-title">
+        AyyDev Tools
+      </h1>
+
+    </section>
+
+
+    <!-- ======================
+         TOOLS LIST
+    ======================= -->
+    <section
+      class="tools-list"
+      id="tools"
+    >
+
+      <p class="message">
+        Loading tools...
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       SCRIPT
+  ========================== -->
+  <script>
+
+
+    /* =========================
+       CONFIGURATION
+    ========================== */
+
+    const GITHUB_USERNAME =
+      "USERNAME_GITHUB_KAMU";
+
+    const GITHUB_REPOSITORY =
+      "NAMA_REPOSITORY_KAMU";
+
+    const GITHUB_BRANCH =
+      "main";
+
+    /*
+     * Folder tempat gambar preview.
+     *
+     * Contoh:
+     *
+     * repository/
+     * ├── tools/
+     * │   ├── Tool 1.png
+     * │   ├── Tool 2.png
+     * │   └── Tool 3.png
+     *
+     */
+
+    const GITHUB_IMAGE_FOLDER =
+      "tools";
+
+
+    /*
+     * API daftar tools.
+     *
+     * Format data yang diharapkan:
+     *
+     * [
+     *   {
+     *     "title": "Tool 1",
+     *     "link": "https://..."
+     *   },
+     *   {
+     *     "title": "Tool 2",
+     *     "link": "https://..."
+     *   }
+     * ]
+     *
+     */
+
+    const TOOLS_API_URL =
+      "https://ayydev-tools-api.akunffbya.workers.dev";
+
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+
+    function goBack() {
+
+      window.location.href =
+        "../index.html";
+    }
+
+
+    /* =========================
+       CREATE IMAGE URL
+    ========================== */
+
+    function getToolImage(toolTitle) {
+
+      /*
+       * Nama file gambar mengikuti
+       * nama judul tool.
+       *
+       * Contoh:
+       *
+       * title:
+       * "JSON Formatter"
+       *
+       * menjadi:
+       *
+       * JSON Formatter.png
+       */
+
+      return (
+        `https://raw.githubusercontent.com/` +
+        `${GITHUB_USERNAME}/` +
+        `${GITHUB_REPOSITORY}/` +
+        `${GITHUB_BRANCH}/` +
+        `${GITHUB_IMAGE_FOLDER}/` +
+        `${encodeURIComponent(toolTitle)}.png`
+      );
+    }
+
+
+    /* =========================
+       LOAD TOOLS
+    ========================== */
+
+    async function loadTools() {
+
+      const tools =
+        document.getElementById("tools");
+
+
+      try {
+
+        const response =
+          await fetch(
+            `${TOOLS_API_URL}?time=${Date.now()}`
+          );
+
+
+        const data =
+          await response.json();
+
+
+        console.log(data);
+
+
+        /* ======================
+           VALIDATE DATA
+        ======================= */
+
+        if (!Array.isArray(data)) {
+
+          tools.innerHTML = `
+            <p class="message">
+              Data tools invalid.
+            </p>
+          `;
+
+          return;
+        }
+
+
+        /* ======================
+           EMPTY DATA
+        ======================= */
+
+        if (data.length === 0) {
+
+          tools.innerHTML = `
+            <p class="message">
+              Belum ada tools.
+            </p>
+          `;
+
+          return;
+        }
+
+
+        /* ======================
+           CLEAR LIST
+        ======================= */
+
+        tools.innerHTML = "";
+
+
+        /* ======================
+           CREATE TOOL CARD
+        ======================= */
+
+        data.forEach(tool => {
+
+          const image =
+            getToolImage(tool.title);
+
+
+          tools.innerHTML += `
+
+            <article class="tool-card">
+
+              <img
+                class="tool-image"
+                src="${image}"
+                alt="${tool.title}"
+                loading="lazy"
+              >
+
+
+              <div class="tool-content">
+
+                <h2 class="tool-title">
+                  ${tool.title}
+                </h2>
+
+
+                <a
+                  class="visit-button"
+                  href="${tool.link}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit
+                </a>
+
+              </div>
+
+            </article>
+
+          `;
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Failed loading tools:",
+          error
+        );
+
+
+        tools.innerHTML = `
+          <p class="message">
+            Gagal mengambil daftar tools.
+          </p>
+        `;
+      }
+    }
+
+
+    /* =========================
+       INITIALIZE
+    ========================== */
+
+    loadTools();
+
+  </script>
+
+</body>
+</html>
