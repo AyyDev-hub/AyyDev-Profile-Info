@@ -1,303 +1,175 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-
-  <!-- =========================
-       META
-  ========================== -->
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>AyyDev Tools</title>
 
-  <title>
-    AyyDev Tools
-  </title>
-
-
-  <!-- =========================
-       STYLE
-  ========================== -->
   <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-color: #1e293b;
+      --primary-color: #3b82f6;
+      --primary-hover: #2563eb;
+      --text-color: #ffffff;
+      --subtext-color: #cbd5e1;
+    }
 
-    /* =========================
-       RESET
-    ========================== */
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
-
-    /* =========================
-       ROOT
-    ========================== */
-    :root {
-
-      --bg-color: #0f172a;
-      --card-color: #1e293b;
-
-      --primary-color: #3b82f6;
-      --primary-hover: #2563eb;
-
-      --text-color: #ffffff;
-      --subtext-color: #cbd5e1;
-
-      --soft-color: rgba(255, 255, 255, 0.08);
-      --soft-hover: rgba(255, 255, 255, 0.15);
-
-      --border-radius: 16px;
-      --transition-speed: 0.2s;
-    }
-
-
-    /* =========================
-       BODY
-    ========================== */
     body {
-
-      font-family: Arial, sans-serif;
-
-      background: var(--bg-color);
-      color: var(--text-color);
-
+      margin: 0;
       min-height: 100vh;
+      padding: 30px 16px;
 
       display: flex;
       justify-content: center;
 
-      padding: 20px;
+      background: var(--bg-color);
+      color: var(--text-color);
+
+      font-family: Arial, sans-serif;
     }
 
-
-    /* =========================
-       MAIN CONTAINER
-    ========================== */
     .container {
-
       width: 100%;
       max-width: 700px;
-
-      background: var(--card-color);
-
-      border-radius: var(--border-radius);
-
-      padding: 32px;
-
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-
     /* =========================
-       PAGE HEADER
-    ========================== */
-    .page-header {
+       HEADER
+    ========================= */
 
+    .header {
       display: flex;
       align-items: center;
-
-      gap: 15px;
-
-      margin-bottom: 30px;
+      gap: 12px;
+      margin-bottom: 25px;
     }
 
-
-    /* =========================
-       BACK BUTTON
-    ========================== */
     .back-button {
-
-      width: 45px;
-      height: 45px;
+      width: 42px;
+      height: 42px;
 
       border: none;
       border-radius: 12px;
 
-      background: var(--soft-color);
-      color: white;
+      background: var(--card-color);
+      color: var(--text-color);
 
-      font-size: 20px;
-
+      font-size: 22px;
       cursor: pointer;
 
-      transition:
-        background var(--transition-speed),
-        transform var(--transition-speed);
+      transition: 0.2s;
     }
 
     .back-button:hover {
-
-      background: var(--soft-hover);
-
-      transform: translateX(-2px);
+      background: var(--primary-color);
     }
 
-
-    /* =========================
-       PAGE TITLE
-    ========================== */
-    .page-title {
-
+    .title {
+      margin: 0;
       font-size: 28px;
-      font-weight: bold;
     }
-
 
     /* =========================
        TOOLS LIST
-    ========================== */
-    .tools-list {
+    ========================= */
 
+    .tools-list {
       display: flex;
       flex-direction: column;
-
-      gap: 20px;
+      gap: 16px;
     }
 
-
-    /* =========================
-       TOOL CARD
-    ========================== */
     .tool-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
 
-      overflow: hidden;
+      padding: 14px;
 
-      background:
-        rgba(255, 255, 255, 0.04);
-
+      background: var(--card-color);
       border-radius: 16px;
-    }
-
-
-    /* =========================
-       TOOL PREVIEW
-    ========================== */
-    .tool-image {
-
-      width: 100%;
-      height: 220px;
-
-      display: block;
-
-      object-fit: cover;
-
-      background:
-        rgba(255, 255, 255, 0.05);
-    }
-
-
-    /* =========================
-       TOOL CONTENT
-    ========================== */
-    .tool-content {
-
-      padding: 18px;
-    }
-
-
-    /* =========================
-       TOOL TITLE
-    ========================== */
-    .tool-title {
-
-      font-size: 22px;
-
-      margin-bottom: 15px;
-    }
-
-
-    /* =========================
-       VISIT BUTTON
-    ========================== */
-    .visit-button {
-
-      display: inline-block;
-
-      padding: 12px 18px;
-
-      border-radius: 12px;
-
-      background:
-        var(--primary-color);
-
-      color: white;
-
-      text-decoration: none;
-
-      font-weight: bold;
 
       transition:
-        background var(--transition-speed),
-        transform var(--transition-speed);
+        transform 0.2s,
+        background 0.2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .tool-image {
+      width: 100px;
+      height: 100px;
+
+      flex-shrink: 0;
+
+      object-fit: cover;
+      border-radius: 12px;
+
+      background: #0f172a;
+    }
+
+    .tool-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tool-title {
+      margin: 0 0 12px;
+
+      font-size: 20px;
+      word-break: break-word;
+    }
+
+    .visit-button {
+      display: inline-block;
+
+      padding: 9px 16px;
+
+      background: var(--primary-color);
+      color: white;
+
+      border-radius: 10px;
+
+      text-decoration: none;
+      font-size: 14px;
+
+      transition: background 0.2s;
     }
 
     .visit-button:hover {
-
-      background:
-        var(--primary-hover);
-
-      transform:
-        translateY(-2px);
+      background: var(--primary-hover);
     }
 
-
     /* =========================
-       MESSAGE
-    ========================== */
-    .message {
+       MOBILE
+    ========================= */
 
-      text-align: center;
-
-      color: var(--subtext-color);
-
-      padding: 20px 0;
-    }
-
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-    @media (max-width: 480px) {
-
-      .container {
-        padding: 24px;
-      }
-
-      .page-title {
-        font-size: 24px;
+    @media (max-width: 500px) {
+      .tool-image {
+        width: 80px;
+        height: 80px;
       }
 
       .tool-title {
-        font-size: 20px;
-      }
-
-      .tool-image {
-        height: 190px;
+        font-size: 17px;
       }
     }
-
   </style>
-
 </head>
-
 
 <body>
 
-  <!-- =========================
-       MAIN CONTAINER
-  ========================== -->
   <main class="container">
 
-
-    <!-- ======================
-         PAGE HEADER
-    ======================= -->
-    <section class="page-header">
-
+    <header class="header">
       <button
         class="back-button"
         onclick="goBack()"
@@ -306,263 +178,125 @@
         ❮
       </button>
 
-      <h1 class="page-title">
-        AyyDev Tools
-      </h1>
+      <h1 class="title">AyyDev Tools</h1>
+    </header>
 
-    </section>
-
-
-    <!-- ======================
-         TOOLS LIST
-    ======================= -->
     <section
-      class="tools-list"
       id="tools"
-    >
-
-      <p class="message">
-        Loading tools...
-      </p>
-
-    </section>
+      class="tools-list"
+    ></section>
 
   </main>
 
-
-  <!-- =========================
-       SCRIPT
-  ========================== -->
   <script>
-
-
     /* =========================
        CONFIGURATION
-    ========================== */
+    ========================= */
 
-    const GITHUB_USERNAME =
-      "USERNAME_GITHUB_KAMU";
+    const GITHUB_USERNAME = "USERNAME_GITHUB_KAMU";
+    const GITHUB_REPOSITORY = "NAMA_REPOSITORY_KAMU";
+    const GITHUB_BRANCH = "main";
 
-    const GITHUB_REPOSITORY =
-      "NAMA_REPOSITORY_KAMU";
-
-    const GITHUB_BRANCH =
-      "main";
-
-    /*
-     * Folder tempat gambar preview.
-     *
-     * Contoh:
-     *
-     * repository/
-     * ├── tools/
-     * │   ├── Tool 1.png
-     * │   ├── Tool 2.png
-     * │   └── Tool 3.png
-     *
-     */
-
-    const GITHUB_IMAGE_FOLDER =
-      "tools";
-
-
-    /*
-     * API daftar tools.
-     *
-     * Format data yang diharapkan:
-     *
-     * [
-     *   {
-     *     "title": "Tool 1",
-     *     "link": "https://..."
-     *   },
-     *   {
-     *     "title": "Tool 2",
-     *     "link": "https://..."
-     *   }
-     * ]
-     *
-     */
-
-    const TOOLS_API_URL =
-      "https://ayydev-tools-api.akunffbya.workers.dev";
+    const GITHUB_IMAGE_FOLDER = "tools";
 
 
     /* =========================
-       BACK BUTTON
-    ========================== */
+       TOOLS DATA
+    ========================= */
+
+    const toolsList = [
+      {
+        title: "JSON Formatter",
+        link: "https://example.com/json-formatter"
+      },
+
+      {
+        title: "Image Converter",
+        link: "https://example.com/image-converter"
+      },
+
+      {
+        title: "Text Generator",
+        link: "https://example.com/text-generator"
+      }
+    ];
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     function goBack() {
-
-      window.location.href =
-        "../index.html";
+      window.location.href = "../index.html";
     }
 
 
     /* =========================
-       CREATE IMAGE URL
-    ========================== */
+       IMAGE
+    ========================= */
 
-    function getToolImage(toolTitle) {
-
-      /*
-       * Nama file gambar mengikuti
-       * nama judul tool.
-       *
-       * Contoh:
-       *
-       * title:
-       * "JSON Formatter"
-       *
-       * menjadi:
-       *
-       * JSON Formatter.png
-       */
-
+    function getToolImage(title) {
       return (
         `https://raw.githubusercontent.com/` +
         `${GITHUB_USERNAME}/` +
         `${GITHUB_REPOSITORY}/` +
         `${GITHUB_BRANCH}/` +
         `${GITHUB_IMAGE_FOLDER}/` +
-        `${encodeURIComponent(toolTitle)}.png`
+        `${encodeURIComponent(title)}.png`
       );
     }
 
 
     /* =========================
-       LOAD TOOLS
-    ========================== */
+       RENDER
+    ========================= */
 
-    async function loadTools() {
+    function renderTools() {
+      const toolsContainer = document.getElementById("tools");
 
-      const tools =
-        document.getElementById("tools");
+      toolsContainer.innerHTML = "";
 
+      toolsList.forEach(tool => {
+        const card = document.createElement("article");
+        card.className = "tool-card";
 
-      try {
+        const image = document.createElement("img");
+        image.className = "tool-image";
+        image.src = getToolImage(tool.title);
+        image.alt = tool.title;
+        image.loading = "lazy";
 
-        const response =
-          await fetch(
-            `${TOOLS_API_URL}?time=${Date.now()}`
-          );
+        const content = document.createElement("div");
+        content.className = "tool-content";
 
+        const title = document.createElement("h2");
+        title.className = "tool-title";
+        title.textContent = tool.title;
 
-        const data =
-          await response.json();
+        const button = document.createElement("a");
+        button.className = "visit-button";
+        button.href = tool.link;
+        button.textContent = "Visit";
 
+        button.target = "_blank";
+        button.rel = "noopener noreferrer";
 
-        console.log(data);
+        content.appendChild(title);
+        content.appendChild(button);
 
+        card.appendChild(image);
+        card.appendChild(content);
 
-        /* ======================
-           VALIDATE DATA
-        ======================= */
-
-        if (!Array.isArray(data)) {
-
-          tools.innerHTML = `
-            <p class="message">
-              Data tools invalid.
-            </p>
-          `;
-
-          return;
-        }
-
-
-        /* ======================
-           EMPTY DATA
-        ======================= */
-
-        if (data.length === 0) {
-
-          tools.innerHTML = `
-            <p class="message">
-              Belum ada tools.
-            </p>
-          `;
-
-          return;
-        }
-
-
-        /* ======================
-           CLEAR LIST
-        ======================= */
-
-        tools.innerHTML = "";
-
-
-        /* ======================
-           CREATE TOOL CARD
-        ======================= */
-
-        data.forEach(tool => {
-
-          const image =
-            getToolImage(tool.title);
-
-
-          tools.innerHTML += `
-
-            <article class="tool-card">
-
-              <img
-                class="tool-image"
-                src="${image}"
-                alt="${tool.title}"
-                loading="lazy"
-              >
-
-
-              <div class="tool-content">
-
-                <h2 class="tool-title">
-                  ${tool.title}
-                </h2>
-
-
-                <a
-                  class="visit-button"
-                  href="${tool.link}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit
-                </a>
-
-              </div>
-
-            </article>
-
-          `;
-        });
-
-
-      } catch (error) {
-
-        console.error(
-          "Failed loading tools:",
-          error
-        );
-
-
-        tools.innerHTML = `
-          <p class="message">
-            Gagal mengambil daftar tools.
-          </p>
-        `;
-      }
+        toolsContainer.appendChild(card);
+      });
     }
 
 
     /* =========================
        INITIALIZE
-    ========================== */
+    ========================= */
 
-    loadTools();
-
+    renderTools();
   </script>
 
 </body>
